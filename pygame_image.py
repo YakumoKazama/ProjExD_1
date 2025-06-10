@@ -25,28 +25,33 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
+        #背景の描画
         x = tmr % 3200
-
         screen.blit(bg_img, [-1 * x, 0])
         screen.blit(bg_img2, [-1 * x + 1600, 0])
         screen.blit(bg_img, [-1 * x + 3200, 0])
 
-        kk_rect.move_ip((-1, 0)) #何もしていない時は左に流れる
+        #キーボード操作の実装
+        kk_move_x = -1 #何もキーを押していないときは左に動く.
+        kk_move_y = 0
         key_lst = pg.key.get_pressed()
-        if key_lst[pg.K_UP]: 
-            kk_rect.move_ip((0, -1))
-        elif key_lst[pg.K_DOWN]: 
-            kk_rect.move_ip((0, 1))
-        elif key_lst[pg.K_LEFT]: 
-            kk_rect.move_ip((-1, 0))
-        elif key_lst[pg.K_RIGHT]: 
-            kk_rect.move_ip((1, 0))
 
+        if key_lst[pg.K_UP]: 
+            kk_move_y -= 1
+        elif key_lst[pg.K_DOWN]: 
+            kk_move_y += 1
+        elif key_lst[pg.K_LEFT]: 
+            kk_move_x -= 1
+        elif key_lst[pg.K_RIGHT]: 
+            kk_move_x += 2 #右にも動けるようにするため、さらに+2する
+
+        kk_rect.move_ip((kk_move_x, kk_move_y))   
         screen.blit(kk_img_fly, kk_rect)
+
+        #更新
         pg.display.update()
         tmr += 1        
         clock.tick(200)
-
 
 if __name__ == "__main__":
     pg.init()
