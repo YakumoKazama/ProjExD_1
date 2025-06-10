@@ -11,6 +11,7 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
+    bg_img2 = pg.transform.flip(bg_img, True, False)
     kk_img_fly = pg.image.load("fig/3.png") #Surfaceインスタンス
     kk_img_fly = pg.transform.flip(kk_img_fly, True, False) #左右反転
 
@@ -21,7 +22,7 @@ def main():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [-1 * tmr, 0])
-        screen.blit(bg_img, [-1 * tmr + 1600, 0])
+        screen.blit(bg_img2, [-1 * tmr + 1600, 0])
         screen.blit(kk_img_fly, [200, 300])
         pg.display.update()
         tmr += 1        
