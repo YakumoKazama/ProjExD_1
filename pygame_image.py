@@ -10,7 +10,7 @@ def main():
     pg.display.set_caption("はばたけ！こうかとん")
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
-    bg_img = pg.image.load("fig/pg_bg.jpg")
+    # bg_img = pg.image.load("fig/pg_bg.jpg")
     kk_img_fly = pg.image.load("fig/3.png") #Surfaceインスタンス
     kk_img_fly = pg.transform.flip(kk_img_fly, True, False) #左右反転
 
@@ -20,7 +20,11 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [tmr, 0])
+        if tmr % 800 == 0:
+            bg_img = pg.image.load("fig/pg_bg.jpg")
+            tmr = 0
+
+        screen.blit(bg_img, [-1 * tmr, 0])
         screen.blit(kk_img_fly, [200, 300])
         pg.display.update()
         tmr += 1        
