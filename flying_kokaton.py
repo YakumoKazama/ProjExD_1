@@ -38,11 +38,11 @@ def main():
 
         if key_lst[pg.K_UP]: 
             kk_move_y -= 1
-        elif key_lst[pg.K_DOWN]: 
+        if key_lst[pg.K_DOWN]: 
             kk_move_y += 1
-        elif key_lst[pg.K_LEFT]: 
+        if key_lst[pg.K_LEFT]: 
             kk_move_x -= 1
-        elif key_lst[pg.K_RIGHT]: 
+        if key_lst[pg.K_RIGHT]: 
             kk_move_x += 2 #右にも動けるようにするため、さらに+2する
 
         kk_rect.move_ip((kk_move_x, kk_move_y))   
