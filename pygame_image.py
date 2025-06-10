@@ -21,8 +21,11 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [-1 * tmr, 0])
-        screen.blit(bg_img2, [-1 * tmr + 1600, 0])
+        x = tmr % 3200
+
+        screen.blit(bg_img, [-1 * x, 0])
+        screen.blit(bg_img2, [-1 * x + 1600, 0])
+        screen.blit(bg_img, [-1 * x + 3200, 0])
         screen.blit(kk_img_fly, [200, 300])
         pg.display.update()
         tmr += 1        
