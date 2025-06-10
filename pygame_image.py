@@ -31,11 +31,16 @@ def main():
         screen.blit(bg_img2, [-1 * x + 1600, 0])
         screen.blit(bg_img, [-1 * x + 3200, 0])
 
+        kk_rect.move_ip((-1, 0)) #何もしていない時は左に流れる
         key_lst = pg.key.get_pressed()
-        if key_lst[pg.K_UP]: kk_rect.move_ip((0, -1))
-        if key_lst[pg.K_DOWN]: kk_rect.move_ip((0, 1))
-        if key_lst[pg.K_LEFT]: kk_rect.move_ip((-1, 0))
-        if key_lst[pg.K_RIGHT]: kk_rect.move_ip((1, 0))
+        if key_lst[pg.K_UP]: 
+            kk_rect.move_ip((0, -1))
+        elif key_lst[pg.K_DOWN]: 
+            kk_rect.move_ip((0, 1))
+        elif key_lst[pg.K_LEFT]: 
+            kk_rect.move_ip((-1, 0))
+        elif key_lst[pg.K_RIGHT]: 
+            kk_rect.move_ip((1, 0))
 
         screen.blit(kk_img_fly, kk_rect)
         pg.display.update()
